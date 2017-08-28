@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="耿文娟" />
+
+
+
+<meta name="description" content="nodejs 案例思路分析（数据为json格式的本地文件）1.建立工作环境,(建一个工作文件夹)2.npm init -y; 初始化配置,生成一个package.json文件3.安装所有依赖的包- 1.express - 2.art-template - 3.express-art-template - 4.body-parser">
+<meta name="keywords" content="个人博客,笔记本,前端拓展">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs 案例思路分析（json文件+后台渲染）">
+<meta property="og:url" content="http://yoursite.com/2017/06/12/nodejs案例(json + 后台渲染)思路分析/index.html">
+<meta property="og:site_name" content="wen">
+<meta property="og:description" content="nodejs 案例思路分析（数据为json格式的本地文件）1.建立工作环境,(建一个工作文件夹)2.npm init -y; 初始化配置,生成一个package.json文件3.安装所有依赖的包- 1.express - 2.art-template - 3.express-art-template - 4.body-parser">
+<meta property="og:updated_time" content="2017-08-28T11:51:17.762Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs 案例思路分析（json文件+后台渲染）">
+<meta name="twitter:description" content="nodejs 案例思路分析（数据为json格式的本地文件）1.建立工作环境,(建一个工作文件夹)2.npm init -y; 初始化配置,生成一个package.json文件3.安装所有依赖的包- 1.express - 2.art-template - 3.express-art-template - 4.body-parser">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="wen" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/logo.jpg">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>nodejs 案例思路分析（json文件+后台渲染） | wen</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/logo.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">耿文娟</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/随笔">随笔</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:862754020@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="/sina weibo" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" href="/douban" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="/jianshu" title="简书"></a>
+                            
+                                <a class="fa 博客园" href="https://www.cnblogs.com/" title="博客园"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/攻城狮/">攻城狮</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">耿文娟</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/logo.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">耿文娟</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/随笔">随笔</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:862754020@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="/sina weibo" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="/douban" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="/jianshu" title="简书"></a>
+                            
+                                <a class="fa 博客园" target="_blank" href="https://www.cnblogs.com/" title="博客园"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-nodejs案例(json + 后台渲染)思路分析" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/12/nodejs案例(json + 后台渲染)思路分析/" class="article-date">
+      <time datetime="2017-06-12T07:25:06.000Z" itemprop="datePublished">2017-06-12</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      nodejs 案例思路分析（json文件+后台渲染）
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h2 id="nodejs-案例思路分析（数据为json格式的本地文件）"><a href="#nodejs-案例思路分析（数据为json格式的本地文件）" class="headerlink" title="nodejs 案例思路分析（数据为json格式的本地文件）"></a>nodejs 案例思路分析（数据为json格式的本地文件）</h2><h3 id="1-建立工作环境-建一个工作文件夹"><a href="#1-建立工作环境-建一个工作文件夹" class="headerlink" title="1.建立工作环境,(建一个工作文件夹)"></a>1.建立工作环境,(建一个工作文件夹)</h3><h3 id="2-npm-init-y-初始化配置-生成一个package-json文件"><a href="#2-npm-init-y-初始化配置-生成一个package-json文件" class="headerlink" title="2.npm init -y; 初始化配置,生成一个package.json文件"></a>2.npm init -y; 初始化配置,生成一个package.json文件</h3><h3 id="3-安装所有依赖的包"><a href="#3-安装所有依赖的包" class="headerlink" title="3.安装所有依赖的包"></a>3.安装所有依赖的包</h3><pre><code>- 1.express
+- 2.art-template
+- 3.express-art-template
+- 4.body-parser
+</code></pre><a id="more"></a>
+<h3 id="4-环境准备好之后，准备入口文件"><a href="#4-环境准备好之后，准备入口文件" class="headerlink" title="4.环境准备好之后，准备入口文件"></a>4.环境准备好之后，准备入口文件</h3><h3 id="5-加载项目所依赖的包"><a href="#5-加载项目所依赖的包" class="headerlink" title="5.加载项目所依赖的包"></a>5.加载项目所依赖的包</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">'./router.js'</span>);</div><div class="line"><span class="keyword">const</span> template = <span class="built_in">require</span>(<span class="string">'art-template'</span>);</div><div class="line"><span class="keyword">const</span> bodyParser = <span class="built_in">require</span>(<span class="string">'body-parser'</span>);</div><div class="line"><span class="keyword">const</span> app = express();</div></pre></td></tr></table></figure>
+<h3 id="6-设置模板引擎："><a href="#6-设置模板引擎：" class="headerlink" title="6.设置模板引擎："></a>6.设置模板引擎：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 设置模板引擎</span></div><div class="line"><span class="comment">// 设置模板的路径,这里用到path，我们需要先引入path，再设置</span></div><div class="line"><span class="comment">// 而且我们的模板默认是放到views文件夹下的，所以我们需要先建一个文件夹放模板文件</span></div><div class="line">app.set(<span class="string">'views'</span>,path.join(__dirname,<span class="string">'views'</span>));</div><div class="line"><span class="comment">// 设置模板引擎</span></div><div class="line">app.set(<span class="string">'view engine'</span>,<span class="string">'art'</span>);</div><div class="line"><span class="comment">// 使express兼容art-template模板引擎</span></div><div class="line">app.engine(<span class="string">'art'</span>, <span class="built_in">require</span>(<span class="string">'express-art-template'</span>));</div></pre></td></tr></table></figure>
+<h3 id="7-处理请求参数："><a href="#7-处理请求参数：" class="headerlink" title="7.处理请求参数："></a>7.处理请求参数：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 处理请求参数</span></div><div class="line"><span class="comment">// 挂载参数处理中间件（post）</span></div><div class="line">app.use(bodyParser.urlencoded(&#123; <span class="attr">extended</span>: <span class="literal">false</span> &#125;));</div><div class="line"><span class="comment">// 处理json格式的参数</span></div><div class="line">app.use(bodyParser.json());</div></pre></td></tr></table></figure>
+<h3 id="8-启动服务器功能"><a href="#8-启动服务器功能" class="headerlink" title="8.启动服务器功能"></a>8.启动服务器功能</h3><ul>
+<li>1.配置路由</li>
+</ul>
+<p>一般单独的创建一个router文件，在入口文件上引入改文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//创建一个router.js文件，在入口文件中引入</span></div><div class="line"><span class="keyword">const</span> router = <span class="built_in">require</span>(<span class="string">'./router.js'</span>);</div></pre></td></tr></table></figure>
+<p>再配置路由</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 启动服务器功能</span></div><div class="line"><span class="comment">// 配置路由</span></div><div class="line">app.use(router);</div></pre></td></tr></table></figure>
+<ul>
+<li>2.监听端口</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 监听端口</span></div><div class="line">app.listen(<span class="number">3000</span>,()=&gt;&#123;</div><div class="line">     <span class="built_in">console</span>.log(<span class="string">'running...'</span>);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="9-创建一个业务模块-service-js-，处理具体的操作，在该模块文件中引入业务模块导出的内容及各种所需要的包，"><a href="#9-创建一个业务模块-service-js-，处理具体的操作，在该模块文件中引入业务模块导出的内容及各种所需要的包，" class="headerlink" title="9.创建一个业务模块 service.js ，处理具体的操作，在该模块文件中引入业务模块导出的内容及各种所需要的包，"></a>9.创建一个业务模块 service.js ，处理具体的操作，在该模块文件中引入业务模块导出的内容及各种所需要的包，</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">const</span> data = <span class="built_in">require</span>(<span class="string">'./data.json'</span>);</div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div></pre></td></tr></table></figure>
+<h3 id="10-在路由模块文件中引入业务模块及各种所需要的包，在文件的最后导出路由模块，给入口文件使用"><a href="#10-在路由模块文件中引入业务模块及各种所需要的包，在文件的最后导出路由模块，给入口文件使用" class="headerlink" title="10.在路由模块文件中引入业务模块及各种所需要的包，在文件的最后导出路由模块，给入口文件使用"></a>10.在路由模块文件中引入业务模块及各种所需要的包，在文件的最后导出路由模块，给入口文件使用</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">    路由模块</span></div><div class="line"><span class="comment">*/</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">const</span> router = express.Router();</div><div class="line"><span class="keyword">const</span> service = <span class="built_in">require</span>(<span class="string">'./service.js'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 路由处理</span></div><div class="line">.........</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = router;</div></pre></td></tr></table></figure>
+<h3 id="11-在views文件夹里创建一个主页面（art后缀）-创建一个静态资源文件夹public，把样式文件等各个静态资源文件放在public文件夹里"><a href="#11-在views文件夹里创建一个主页面（art后缀）-创建一个静态资源文件夹public，把样式文件等各个静态资源文件放在public文件夹里" class="headerlink" title="11.在views文件夹里创建一个主页面（art后缀）,创建一个静态资源文件夹public，把样式文件等各个静态资源文件放在public文件夹里"></a>11.在views文件夹里创建一个主页面（art后缀）,创建一个静态资源文件夹public，把样式文件等各个静态资源文件放在public文件夹里</h3><h3 id="12-在入口文件里启动静态资源服务器"><a href="#12-在入口文件里启动静态资源服务器" class="headerlink" title="12.在入口文件里启动静态资源服务器"></a>12.在入口文件里启动静态资源服务器</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">// 启动静态资源服务</span></div><div class="line">app.use(express.static(<span class="string">'public'</span>));</div></pre></td></tr></table></figure>
+<h3 id="13-在业务模块-service-js-渲染页面，添加各种功能，然后把各个渲染，功能导出，在路由模块调用，如下："><a href="#13-在业务模块-service-js-渲染页面，添加各种功能，然后把各个渲染，功能导出，在路由模块调用，如下：" class="headerlink" title="13.在业务模块 service.js 渲染页面，添加各种功能，然后把各个渲染，功能导出，在路由模块调用，如下："></a>13.在业务模块 service.js 渲染页面，添加各种功能，然后把各个渲染，功能导出，在路由模块调用，如下：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">    业务模块 service.js</span></div><div class="line"><span class="comment">*/</span></div><div class="line"><span class="keyword">const</span> data = <span class="built_in">require</span>(<span class="string">'./data.json'</span>);</div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 自动生成图书编号（自增）</span></div><div class="line"><span class="keyword">let</span> maxBookCode = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</div><div class="line">    <span class="keyword">let</span> arr = [];</div><div class="line">    data.forEach(<span class="function">(<span class="params">item</span>)=&gt;</span>&#123;</div><div class="line">        arr.push(item.id);</div><div class="line">    &#125;);</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Math</span>.max.apply(<span class="literal">null</span>,arr);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 把内存数据写入文件</span></div><div class="line"><span class="keyword">let</span> writeDataToFile = <span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</div><div class="line">    fs.writeFile(path.join(__dirname,<span class="string">'data.json'</span>),<span class="built_in">JSON</span>.stringify(data,<span class="literal">null</span>,<span class="number">4</span>),(err)=&gt;&#123;</div><div class="line">        <span class="keyword">if</span>(err)&#123;</div><div class="line">            res.send(<span class="string">'server error'</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="comment">// 文件写入成功之后重新跳转到主页面</span></div><div class="line">        res.redirect(<span class="string">'/'</span>);</div><div class="line">    &#125;);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 渲染主页面</span></div><div class="line">exports.showIndex = <span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</div><div class="line">    res.render(<span class="string">'index'</span>,&#123;<span class="attr">list</span> : data&#125;);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 跳转到添加图书的页面</span></div><div class="line">exports.toAddBook = <span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</div><div class="line">    res.render(<span class="string">'addBook'</span>,&#123;&#125;);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 添加图书保存数据</span></div><div class="line">exports.addBook = <span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</div><div class="line">    <span class="comment">// 获取表单数据</span></div><div class="line">    <span class="keyword">let</span> info = req.body;</div><div class="line">    <span class="keyword">let</span> book = &#123;&#125;;</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> info)&#123;</div><div class="line">        book[key] = info[key];</div><div class="line">    &#125;</div><div class="line">    book.id = maxBookCode() + <span class="number">1</span>;</div><div class="line">    data.push(book);</div><div class="line">    <span class="comment">// 把内存中的数据写入文件</span></div><div class="line">    writeDataToFile(res);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 跳转编辑图书页面</span></div><div class="line">exports.toEditBook = <span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> id = req.query.id;</div><div class="line">    <span class="keyword">let</span> book = &#123;&#125;;</div><div class="line">    data.forEach(<span class="function">(<span class="params">item</span>)=&gt;</span>&#123;</div><div class="line">        <span class="keyword">if</span>(id == item.id)&#123;</div><div class="line">            book = item;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    res.render(<span class="string">'editBook'</span>,book);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 编辑图书更新数据</span></div><div class="line">exports.editBook = <span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> info = req.body;</div><div class="line">    data.forEach(<span class="function">(<span class="params">item</span>)=&gt;</span>&#123;</div><div class="line">        <span class="keyword">if</span>(info.id == item.id)&#123;</div><div class="line">            <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> info)&#123;</div><div class="line">                item[key] = info[key];</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">return</span>;</div><div class="line">        &#125;</div><div class="line">    &#125;);</div><div class="line">    <span class="comment">// 把内存中的数据写入文件</span></div><div class="line">    writeDataToFile(res);</div><div class="line">&#125;</div><div class="line"><span class="comment">// 删除图书信息</span></div><div class="line">exports.deleteBook = <span class="function">(<span class="params">req,res</span>) =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> id = req.query.id;</div><div class="line">    data.forEach(<span class="function">(<span class="params">item,index</span>)=&gt;</span>&#123;</div><div class="line">        <span class="keyword">if</span>(id == item.id)&#123;</div><div class="line">            <span class="comment">// 删除数组的一项数据</span></div><div class="line">            data.splice(index,<span class="number">1</span>);</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span>;</div><div class="line">    &#125;);</div><div class="line">    <span class="comment">// 把内存中的数据写入文件</span></div><div class="line">    writeDataToFile(res);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">/*</span></div><div class="line"><span class="comment">    路由模块 router.js</span></div><div class="line"><span class="comment">*/</span></div><div class="line"></div><div class="line"><span class="keyword">const</span> express = <span class="built_in">require</span>(<span class="string">'express'</span>);</div><div class="line"><span class="keyword">const</span> router = express.Router();</div><div class="line"><span class="keyword">const</span> service = <span class="built_in">require</span>(<span class="string">'./service.js'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 路由处理</span></div><div class="line"></div><div class="line"><span class="comment">// 渲染主页</span></div><div class="line">router.get(<span class="string">'/'</span>,service.showIndex);</div><div class="line"><span class="comment">// 添加图书(跳转到添加图书的页面)</span></div><div class="line">router.get(<span class="string">'/toAddBook'</span>,service.toAddBook);</div><div class="line"><span class="comment">// 添加图书(提交表单)</span></div><div class="line">router.post(<span class="string">'/addBook'</span>,service.addBook);</div><div class="line"><span class="comment">// 跳转到编辑图书信息页面</span></div><div class="line">router.get(<span class="string">'/toEditBook'</span>,service.toEditBook);</div><div class="line"><span class="comment">// 编辑图书提交表单</span></div><div class="line">router.post(<span class="string">'/editBook'</span>,service.editBook);</div><div class="line"><span class="comment">// 删除图书信息</span></div><div class="line">router.get(<span class="string">'/deleteBook'</span>,service.deleteBook);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = router;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/06/12/nodejs案例(json + 后台渲染)思路分析/">nodejs 案例思路分析（json文件+后台渲染）</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">耿文娟</a></p>
+        <p><span>发布时间:</span>2017-06-12, 15:25:06</p>
+        <p><span>最后更新:</span>2017-08-28, 19:51:17</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/12/nodejs案例(json + 后台渲染)思路分析/" title="nodejs 案例思路分析（json文件+后台渲染）">http://yoursite.com/2017/06/12/nodejs案例(json + 后台渲染)思路分析/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/06/12/nodejs案例(json + 后台渲染)思路分析/　　作者: 耿文娟" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/06/13/nodejs案例(mysql + 后台渲染)思路分析/">
+                    nodejs 案例思路分析（数据库+后台渲染）
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/06/05/node-js/">
+                    node js
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#nodejs-案例思路分析（数据为json格式的本地文件）"><span class="toc-number">1.</span> <span class="toc-text">nodejs 案例思路分析（数据为json格式的本地文件）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-建立工作环境-建一个工作文件夹"><span class="toc-number">1.1.</span> <span class="toc-text">1.建立工作环境,(建一个工作文件夹)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-npm-init-y-初始化配置-生成一个package-json文件"><span class="toc-number">1.2.</span> <span class="toc-text">2.npm init -y; 初始化配置,生成一个package.json文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-安装所有依赖的包"><span class="toc-number">1.3.</span> <span class="toc-text">3.安装所有依赖的包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-环境准备好之后，准备入口文件"><span class="toc-number">1.4.</span> <span class="toc-text">4.环境准备好之后，准备入口文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-加载项目所依赖的包"><span class="toc-number">1.5.</span> <span class="toc-text">5.加载项目所依赖的包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-设置模板引擎："><span class="toc-number">1.6.</span> <span class="toc-text">6.设置模板引擎：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-处理请求参数："><span class="toc-number">1.7.</span> <span class="toc-text">7.处理请求参数：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-启动服务器功能"><span class="toc-number">1.8.</span> <span class="toc-text">8.启动服务器功能</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-创建一个业务模块-service-js-，处理具体的操作，在该模块文件中引入业务模块导出的内容及各种所需要的包，"><span class="toc-number">1.9.</span> <span class="toc-text">9.创建一个业务模块 service.js ，处理具体的操作，在该模块文件中引入业务模块导出的内容及各种所需要的包，</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#10-在路由模块文件中引入业务模块及各种所需要的包，在文件的最后导出路由模块，给入口文件使用"><span class="toc-number">1.10.</span> <span class="toc-text">10.在路由模块文件中引入业务模块及各种所需要的包，在文件的最后导出路由模块，给入口文件使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#11-在views文件夹里创建一个主页面（art后缀）-创建一个静态资源文件夹public，把样式文件等各个静态资源文件放在public文件夹里"><span class="toc-number">1.11.</span> <span class="toc-text">11.在views文件夹里创建一个主页面（art后缀）,创建一个静态资源文件夹public，把样式文件等各个静态资源文件放在public文件夹里</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#12-在入口文件里启动静态资源服务器"><span class="toc-number">1.12.</span> <span class="toc-text">12.在入口文件里启动静态资源服务器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#13-在业务模块-service-js-渲染页面，添加各种功能，然后把各个渲染，功能导出，在路由模块调用，如下："><span class="toc-number">1.13.</span> <span class="toc-text">13.在业务模块 service.js 渲染页面，添加各种功能，然后把各个渲染，功能导出，在路由模块调用，如下：</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"nodejs 案例思路分析（json文件+后台渲染）　| wen　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://yoursite.com/2017/06/12/nodejs案例(json + 后台渲染)思路分析/';
+            this.page.identifier = '2017/06/12/nodejs案例(json + 后台渲染)思路分析/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/06/13/nodejs案例(mysql + 后台渲染)思路分析/" title="上一篇: nodejs 案例思路分析（数据库+后台渲染）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/06/05/node-js/" title="下一篇: node js">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/28/webpack 配置文件/">webpack 配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/29/blog/">blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/29/你好/">你好</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/14/nodejs案例(mysql + 前端渲染)思路分析/">nodejs 案例思路分析（数据库+前端渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/13/nodejs案例(mysql + 后台渲染)思路分析/">nodejs 案例思路分析（数据库+后台渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/nodejs案例(json + 后台渲染)思路分析/">nodejs 案例思路分析（json文件+后台渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/node-js/">node js</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/03/node Js概述/">Node.js是做什么的</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/29/MySQL语句/">MYSQL 语句</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/github创建多个blog/">github 创建多个blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/hexo+github创建属于自己的博客/">hexo+github创建属于自己的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 耿文娟
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 10;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
+             categories: ".article-category a, a.tag-list-link", 
+             articleNav: "#article-nav a, #post-nav-button a", 
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+             menu: ".header-menu a", 
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

@@ -15,13 +15,17 @@
 
 
 
+<meta name="description" content="hexo+github创建属于自己的博客直接上实用的不罗嗦">
+<meta name="keywords" content="个人博客,笔记本,前端拓展">
 <meta property="og:type" content="article">
-<meta property="og:title" content="blog">
-<meta property="og:url" content="http://yoursite.com/2017/07/29/blog/index.html">
+<meta property="og:title" content="hexo+github创建属于自己的博客">
+<meta property="og:url" content="http://yoursite.com/2016/07/29/hexo+github创建属于自己的博客/index.html">
 <meta property="og:site_name" content="wen">
-<meta property="og:updated_time" content="2017-07-29T14:11:52.600Z">
+<meta property="og:description" content="hexo+github创建属于自己的博客直接上实用的不罗嗦">
+<meta property="og:updated_time" content="2017-08-28T11:51:47.839Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="blog">
+<meta name="twitter:title" content="hexo+github创建属于自己的博客">
+<meta name="twitter:description" content="hexo+github创建属于自己的博客直接上实用的不罗嗦">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -53,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>blog | wen</title>
+<title>hexo+github创建属于自己的博客 | wen</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -273,11 +277,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-blog" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-hexo+github创建属于自己的博客" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/07/29/blog/" class="article-date">
-      <time datetime="2017-07-29T14:11:52.000Z" itemprop="datePublished">2017-07-29</time>
+      <a href="/2016/07/29/hexo+github创建属于自己的博客/" class="article-date">
+      <time datetime="2016-07-29T07:51:06.000Z" itemprop="datePublished">2016-07-29</time>
 </a>
 
 
@@ -292,7 +296,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      blog
+      hexo+github创建属于自己的博客
     </h1>
   
 
@@ -302,6 +306,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -309,7 +317,82 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h2 id="hexo-github创建属于自己的博客"><a href="#hexo-github创建属于自己的博客" class="headerlink" title="hexo+github创建属于自己的博客"></a>hexo+github创建属于自己的博客</h2><p>直接上实用的不罗嗦</p>
+<a id="more"></a>
+<h3 id="配置环境"><a href="#配置环境" class="headerlink" title="配置环境"></a>配置环境</h3><p>安装Node（必须）</p>
+<p>作用：用来生成静态页面的</p>
+<p>到Node.js官网下载相应平台的最新版本，一路安装即可。</p>
+<p>安装Git（必须）</p>
+<p>作用：把本地的hexo内容提交到github上去.</p>
+<p>安装Xcode就自带有Git，我就不多说了。</p>
+<p>申请GitHub（必须）</p>
+<p>作用：是用来做博客的远程创库、域名、服务器之类的，怎么与本地hexo建立连接等下讲。</p>
+<p>github账号我也不再啰嗦了,没有的话直接申请就行了，跟一般的注册账号差不多，SSH Keys，看你自己了，可以不配制，不配置的话以后每次对自己的博客有改动提交的时候就要手动输入账号密码，配置了就不需要了，怎么配置我就不多说了，网上有很多教程。</p>
+<h3 id="正式安装Hexo"><a href="#正式安装Hexo" class="headerlink" title="正式安装Hexo"></a>正式安装Hexo</h3><p>Node和Git都安装好后,首先创建一个文件夹,如blog,用户存放hexo的配置文件,然后进入blog里安装Hexo。</p>
+<p>执行如下命令安装Hexo：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install -g hexo</div></pre></td></tr></table></figure>
+<p>初始化然后，执行init命令初始化hexo,命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo init</div></pre></td></tr></table></figure>
+<p>好啦，至此，全部安装工作已经完成！blog就是你的博客根目录，所有的操作都在里面进行。</p>
+<p>生成静态页面</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate（hexo g也可以）</div></pre></td></tr></table></figure>
+<p>本地启动</p>
+<p>启动本地服务，进行文章预览调试，命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server</div></pre></td></tr></table></figure>
+<p>浏览器输入<a href="http://localhost:4000" target="_blank" rel="external">http://localhost:4000</a></p>
+<p>我不知道你们能不能，反正我不能，因为我还有环境没配置好</p>
+<h3 id="配置Github"><a href="#配置Github" class="headerlink" title="配置Github"></a>配置Github</h3><p>建立Repository</p>
+<p>建立与你用户名对应的仓库，仓库名必须为【your_user_name.github.io】，固定写法</p>
+<p>然后建立关联，我的blog在本地blog，blog是我之前建的东西也全在这里面，有：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">_config.yml    node_modules    public      <span class="built_in">source</span></div><div class="line"></div><div class="line">db.json        package.json    scaffolds  themes</div></pre></td></tr></table></figure>
+<p>现在我们需要_config.yml文件，来建立关联，命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">vim _config.yml</div></pre></td></tr></table></figure>
+<p>翻到最下面，改成我这样子的</p>
+<p>deploy:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">type</span>: git</div><div class="line"></div><div class="line">repo: git@github.com:hikevinxu/hikevinxu.github.io.git</div><div class="line"></div><div class="line">branch: master</div></pre></td></tr></table></figure>
+<p>然后执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-deployer-git --save</div></pre></td></tr></table></figure>
+<p>网上会有很多说法，有的type是github, 还有repository最后面的后缀也不一样，是github.com.git，我也踩了很多坑，我现在的版本是hexo: 3.1.1，执行命令hexo -vsersion就出来了,貌似3.0后全部改成我上面这种格式了。</p>
+<p>忘了说了，我没用SSH Keys如果你用了SSH Keys的话直接在github里复制SSH的就行了，总共就两种协议，相信你懂的。</p>
+<p>然后，执行配置命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo deploy  （hexo d）</div></pre></td></tr></table></figure>
+<p>然后再浏览器中输入<a href="https://hikevinxu.github.io/就行了，我的github的账户叫hikevinxu,把这个改成你github的账户名就行了" target="_blank" rel="external">https://hikevinxu.github.io/就行了，我的github的账户叫hikevinxu,把这个改成你github的账户名就行了</a></p>
+<h3 id="部署步骤"><a href="#部署步骤" class="headerlink" title="部署步骤"></a>部署步骤</h3><p>每次部署的步骤，可按以下三步来进行。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">hexo clean</div><div class="line"></div><div class="line">hexo generate</div><div class="line"></div><div class="line">hexo deploy</div></pre></td></tr></table></figure>
+<p>一些常用命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">hexo new<span class="string">"postName"</span> <span class="comment">#新建文章</span></div><div class="line"></div><div class="line">hexo new page<span class="string">"pageName"</span> <span class="comment">#新建页面</span></div><div class="line"></div><div class="line">hexo generate <span class="comment">#生成静态页面至public目录</span></div><div class="line"></div><div class="line">hexo server <span class="comment">#开启预览访问端口（默认端口4000，'ctrl + c'关闭server）</span></div><div class="line"></div><div class="line">hexo deploy <span class="comment">#将.deploy目录部署到GitHub</span></div><div class="line"></div><div class="line">hexo <span class="built_in">help</span> <span class="comment"># 查看帮助</span></div><div class="line"></div><div class="line">hexo version <span class="comment">#查看Hexo的版本</span></div></pre></td></tr></table></figure>
+<p>报错总结</p>
+<p>ERROR Deployer not found: git 或者 ERROR Deployer not found: github</p>
+<p>解决方法： npm install hexo-deployer-git –save</p>
+<p>如发生报错： ERROR Process failed: layout/.DS_Store , 那么进入主题里面layout和_partial目录下，使用删除命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">rm-rf.DS_Store</div><div class="line"></div><div class="line">ERROR Plugin load failed: hexo-server</div></pre></td></tr></table></figure>
+<p>原因：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Besides,utilities are separated into a standalone module.hexo.util is not reachable anymore.</div></pre></td></tr></table></figure>
+<p>解决方法，执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo npm install hexo-server</div></pre></td></tr></table></figure>
+<p>执行命令hexo server，提示：Usage: hexo ….</p>
+<p>原因：</p>
+<p>我认为是没有生成本地服务</p>
+<p>解决方法，执行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install hexo-server --save</div></pre></td></tr></table></figure>
+<p>提示：hexo-server@0.1.2 node_modules/hexo-server</p>
+<p>….</p>
+<p>表示成功了</p>
+<p>这个时候再执行：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo-server</div></pre></td></tr></table></figure>
+<p>得到:</p>
+<p>I NFOHexois running at <a href="http://0.0.0.0:4000/.PressCtrl+C" target="_blank" rel="external">http://0.0.0.0:4000/.PressCtrl+C</a> to stop.</p>
+<p>这个时候再点击<a href="http://0.0.0.0:4000，正常情况下应该是最原始的画面，但是我看到的是：" target="_blank" rel="external">http://0.0.0.0:4000，正常情况下应该是最原始的画面，但是我看到的是：</a></p>
+<p>白板和Cannot GET / 几个字</p>
+<p>原因：</p>
+<p>由于2.6以后就更新了，我们需要手动配置些东西，我们需要输入下面三行命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">npm install hexo-renderer-ejs --save</div><div class="line"></div><div class="line">npm install hexo-renderer-stylus --save</div><div class="line"></div><div class="line">npm install hexo-renderer-marked --save</div></pre></td></tr></table></figure>
+<p>这个时候再重新生成静态文件，命令：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo generate（或hexo g）</div></pre></td></tr></table></figure>
+<p>启动本地服务器：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">hexo server（或hexo s）</div></pre></td></tr></table></figure>
+<p>再，点击<a href="http://0.0.0.0:4000,OK终于可以看到属于你自己的blog啦，😄，虽然很简陋，但好歹有了一个属于自己的小窝了，本地已经简单的设置好了，但是现在域名和服务器都是基于自己的电脑，接下来需要跟github进行关联。" target="_blank" rel="external">http://0.0.0.0:4000,OK终于可以看到属于你自己的blog啦，😄，虽然很简陋，但好歹有了一个属于自己的小窝了，本地已经简单的设置好了，但是现在域名和服务器都是基于自己的电脑，接下来需要跟github进行关联。</a></p>
+
       
     </div>
     
@@ -317,13 +400,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/07/29/blog/">blog</a></p>
+        <p><span>本文标题:</span><a href="/2016/07/29/hexo+github创建属于自己的博客/">hexo+github创建属于自己的博客</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">耿文娟</a></p>
-        <p><span>发布时间:</span>2017-07-29, 22:11:52</p>
-        <p><span>最后更新:</span>2017-07-29, 22:11:52</p>
+        <p><span>发布时间:</span>2016-07-29, 15:51:06</p>
+        <p><span>最后更新:</span>2017-08-28, 19:51:47</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/07/29/blog/" title="blog">http://yoursite.com/2017/07/29/blog/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/29/blog/　　作者: 耿文娟" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2016/07/29/hexo+github创建属于自己的博客/" title="hexo+github创建属于自己的博客">http://yoursite.com/2016/07/29/hexo+github创建属于自己的博客/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2016/07/29/hexo+github创建属于自己的博客/　　作者: 耿文娟" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -336,15 +419,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/08/28/webpack 配置文件/">
-                    
+                <a href="/2016/08/12/github创建多个blog/">
+                    github 创建多个blog
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/07/29/你好/">
-                    
+                <a href="/2016/07/29/hello-world/">
+                    Hello World
                 </a>
             </div>
         
@@ -356,7 +439,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo-github创建属于自己的博客"><span class="toc-number">1.</span> <span class="toc-text">hexo+github创建属于自己的博客</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#配置环境"><span class="toc-number">1.1.</span> <span class="toc-text">配置环境</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#正式安装Hexo"><span class="toc-number">1.2.</span> <span class="toc-text">正式安装Hexo</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#配置Github"><span class="toc-number">1.3.</span> <span class="toc-text">配置Github</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#部署步骤"><span class="toc-number">1.4.</span> <span class="toc-text">部署步骤</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -392,7 +475,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"blog　| wen　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"hexo+github创建属于自己的博客　| wen　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -411,8 +494,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://yoursite.com/2017/07/29/blog/';
-            this.page.identifier = '2017/07/29/blog/';
+            this.page.url = 'http://yoursite.com/2016/07/29/hexo+github创建属于自己的博客/';
+            this.page.identifier = '2016/07/29/hexo+github创建属于自己的博客/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -434,7 +517,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/08/28/webpack 配置文件/" title="上一篇: ">
+            <a href="/2016/08/12/github创建多个blog/" title="上一篇: github 创建多个blog">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -442,7 +525,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/07/29/你好/" title="下一篇: ">
+            <a href="/2016/07/29/hello-world/" title="下一篇: Hello World">
                 <i class="fa fa-angle-right"></i>
             </a>
         

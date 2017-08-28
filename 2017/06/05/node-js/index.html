@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+<html >
+<head>
+
+    <!--[if lt IE 9]>
+        <style>body {display: none; background: none !important} </style>
+        <meta http-equiv="Refresh" Content="0; url=//outdatedbrowser.com/" />
+    <![endif]-->
+
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="format-detection" content="telephone=no" />
+<meta name="author" content="耿文娟" />
+
+
+
+<meta name="description" content="Quick Start1. 全局对象 Buffer的基本操作Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入; (1)、构造方法（类）- 实例化buf对象:     + new Buffer(size):">
+<meta name="keywords" content="个人博客,笔记本,前端拓展">
+<meta property="og:type" content="article">
+<meta property="og:title" content="node js">
+<meta property="og:url" content="http://yoursite.com/2017/06/05/node-js/index.html">
+<meta property="og:site_name" content="wen">
+<meta property="og:description" content="Quick Start1. 全局对象 Buffer的基本操作Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入; (1)、构造方法（类）- 实例化buf对象:     + new Buffer(size):">
+<meta property="og:updated_time" content="2017-08-28T11:51:35.035Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="node js">
+<meta name="twitter:description" content="Quick Start1. 全局对象 Buffer的基本操作Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入; (1)、构造方法（类）- 实例化buf对象:     + new Buffer(size):">
+
+<link rel="apple-touch-icon" href= "/apple-touch-icon.png">
+
+
+    <link rel="alternate" href="/atom.xml" title="wen" type="application/atom+xml">
+
+
+
+    <link rel="shortcut icon" href="/logo.jpg">
+
+
+
+    <link href="//cdn.bootcss.com/animate.css/3.5.1/animate.min.css" rel="stylesheet">
+
+
+
+    <link href="//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.css" rel="stylesheet">
+
+
+
+    <script src="//cdn.bootcss.com/pace/1.0.2/pace.min.js"></script>
+    <link href="//cdn.bootcss.com/pace/1.0.2/themes/blue/pace-theme-minimal.css" rel="stylesheet">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+
+<link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+
+
+<title>node js | wen</title>
+
+<script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+
+<script>
+    var yiliaConfig = {
+        fancybox: true,
+        animate: true,
+        isHome: false,
+        isPost: true,
+        isArchive: false,
+        isTag: false,
+        isCategory: false,
+        fancybox_js: "//cdn.bootcss.com/fancybox/2.1.5/jquery.fancybox.min.js",
+        scrollreveal: "//cdn.bootcss.com/scrollReveal.js/3.1.4/scrollreveal.min.js",
+        search: false
+    }
+</script>
+
+
+    <script> yiliaConfig.jquery_ui = [false]; </script>
+
+
+
+    <script> yiliaConfig.rootUrl = "\/";</script>
+
+
+
+
+
+
+</head>
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+    <header id="header" class="inner">
+        <a href="/" class="profilepic">
+            <img src="/img/logo.jpg" class="animated zoomIn">
+        </a>
+        <hgroup>
+          <h1 class="header-author"><a href="/">耿文娟</a></h1>
+        </hgroup>
+
+        
+
+        
+
+
+        
+            <div id="switch-btn" class="switch-btn">
+                <div class="icon">
+                    <div class="icon-ctn">
+                        <div class="icon-wrap icon-house" data-idx="0">
+                            <div class="birdhouse"></div>
+                            <div class="birdhouse_holes"></div>
+                        </div>
+                        <div class="icon-wrap icon-ribbon hide" data-idx="1">
+                            <div class="ribbon"></div>
+                        </div>
+                        
+                        <div class="icon-wrap icon-link hide" data-idx="2">
+                            <div class="loopback_l"></div>
+                            <div class="loopback_r"></div>
+                        </div>
+                        
+                        
+                        <div class="icon-wrap icon-me hide" data-idx="3">
+                            <div class="user"></div>
+                            <div class="shoulder"></div>
+                        </div>
+                        
+                    </div>
+                    
+                </div>
+                <div class="tips-box hide">
+                    <div class="tips-arrow"></div>
+                    <ul class="tips-inner">
+                        <li>菜单</li>
+                        <li>标签</li>
+                        
+                        <li>友情链接</li>
+                        
+                        
+                        <li>关于我</li>
+                        
+                    </ul>
+                </div>
+            </div>
+        
+
+        <div id="switch-area" class="switch-area">
+            <div class="switch-wrap">
+                <section class="switch-part switch-part1">
+                    <nav class="header-menu">
+                        <ul>
+                        
+                            <li><a href="/">主页</a></li>
+                        
+                            <li><a href="/archives/">所有文章</a></li>
+                        
+                            <li><a href="/tags/随笔">随笔</a></li>
+                        
+                            <li><a href="/tags/">标签云</a></li>
+                        
+                            <li><a href="/about/">关于我</a></li>
+                        
+                        </ul>
+                    </nav>
+                    <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" href="mailto:862754020@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" href="/sina weibo" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" href="https://github.com/" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" href="https://www.zhihu.com" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" href="/douban" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" href="/jianshu" title="简书"></a>
+                            
+                                <a class="fa 博客园" href="https://www.cnblogs.com/" title="博客园"></a>
+                            
+                        </ul>
+                    </nav>
+                </section>
+                
+                
+                <section class="switch-part switch-part2">
+                    <div class="widget tagcloud" id="js-tagcloud">
+                        <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/攻城狮/">攻城狮</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
+                    </div>
+                </section>
+                
+                
+                
+                <section class="switch-part switch-part3">
+                    <div id="js-friends">
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://hexo.io">Hexo</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="https://pages.github.com/">GitHub</a>
+                    
+                      <a class="main-nav-link switch-friends-link" href="http://moxfive.xyz/">MOxFIVE</a>
+                    
+                    </div>
+                </section>
+                
+
+                
+                
+                <section class="switch-part switch-part4">
+                
+                    <div id="js-aboutme">专注于前端</div>
+                </section>
+                
+            </div>
+        </div>
+    </header>                
+</div>
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+      <div class="overlay">
+          <div class="slider-trigger"></div>
+          <h1 class="header-author js-mobile-header hide"><a href="/" title="回到主页">耿文娟</a></h1>
+      </div>
+    <div class="intrude-less">
+        <header id="header" class="inner">
+            <a href="/" class="profilepic">
+                <img src="/img/logo.jpg" class="animated zoomIn">
+            </a>
+            <hgroup>
+              <h1 class="header-author"><a href="/" title="回到主页">耿文娟</a></h1>
+            </hgroup>
+            
+            <nav class="header-menu">
+                <ul>
+                
+                    <li><a href="/">主页</a></li>
+                
+                    <li><a href="/archives/">所有文章</a></li>
+                
+                    <li><a href="/tags/随笔">随笔</a></li>
+                
+                    <li><a href="/tags/">标签云</a></li>
+                
+                    <li><a href="/about/">关于我</a></li>
+                
+                <div class="clearfix"></div>
+                </ul>
+            </nav>
+            <nav class="header-nav">
+                        <ul class="social">
+                            
+                                <a class="fa Email" target="_blank" href="mailto:862754020@qq.com" title="Email"></a>
+                            
+                                <a class="fa 新浪微博" target="_blank" href="/sina weibo" title="新浪微博"></a>
+                            
+                                <a class="fa GitHub" target="_blank" href="https://github.com/" title="GitHub"></a>
+                            
+                                <a class="fa 知乎" target="_blank" href="https://www.zhihu.com" title="知乎"></a>
+                            
+                                <a class="fa 豆瓣" target="_blank" href="/douban" title="豆瓣"></a>
+                            
+                                <a class="fa 简书" target="_blank" href="/jianshu" title="简书"></a>
+                            
+                                <a class="fa 博客园" target="_blank" href="https://www.cnblogs.com/" title="博客园"></a>
+                            
+                        </ul>
+            </nav>
+        </header>                
+    </div>
+    <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
+</nav>
+      <div class="body-wrap"><article id="post-node-js" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2017/06/05/node-js/" class="article-date">
+      <time datetime="2017-06-05T03:32:06.000Z" itemprop="datePublished">2017-06-05</time>
+</a>
+
+
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      node js
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+          
+        <h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><h2 id="1-全局对象-Buffer的基本操作"><a href="#1-全局对象-Buffer的基本操作" class="headerlink" title="1. 全局对象 Buffer的基本操作"></a>1. 全局对象 Buffer的基本操作</h2><p>Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入;</p>
+<h3 id="1-、构造方法（类）"><a href="#1-、构造方法（类）" class="headerlink" title="(1)、构造方法（类）"></a>(1)、构造方法（类）</h3><pre><code>- 实例化buf对象:
+    + new Buffer(size):
+</code></pre><a id="more"></a>
+<pre><code>    分配一个大小为 size 字节的新建的 Buffer。如果 size 大于 buffer.kMaxLength 或小于 0，则抛出 RangeError 错误。如果 size 为 0，则创建一个长度为 0 的 Buffer。
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg:<span class="keyword">let</span> buf = <span class="keyword">new</span> Buffer(<span class="number">5</span>);</div><div class="line">   <span class="built_in">console</span>.log(buf);              <span class="comment">// &lt;Buffer 00 00 00 00 00&gt;</span></div></pre></td></tr></table></figure>
+
++ new Buffer(string[, encoding]):
+    string &lt; string &gt; 要编码的字符串,
+    encoding &lt; string &gt; string 的字符串编码。 默认： &apos;utf8&apos;,
+    创建一个包含给定字符串 string 的 Buffer。encoding 参数制定 string 的字符串编码。
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg:<span class="keyword">const</span> buf1 = <span class="keyword">new</span> Buffer(<span class="string">'this is a tést'</span>);</div><div class="line">   <span class="built_in">console</span>.log(buf1.toString());<span class="comment">// 输出: this is a tést</span></div></pre></td></tr></table></figure>
+
++ 类方法：Buffer.alloc(size[, fill[, encoding]])  (常用)
+
+    size &lt;integer&gt; 新建的 Buffer 期望的长度
+    fill &lt;string&gt; | &lt;Buffer&gt; | &lt;integer&gt; 用来预填充新建的 Buffer 的值。 默认: 0
+    encoding &lt;string&gt; 如果 fill 是字符串，则该值是它的字符编码。 默认: &apos;utf8&apos;
+    分配一个大小为 size 字节的新建的 Buffer 。 如果 fill 为 undefined ，则该 Buffer 会用 0 填充。
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: <span class="keyword">let</span> buf = Buffer.alloc(<span class="number">5</span>);</div><div class="line">    <span class="built_in">console</span>.log(buf);            <span class="comment">// &lt;Buffer 00 00 00 00 00&gt;</span></div></pre></td></tr></table></figure>
+
++ 类方法：Buffer.from(arrayBuffer[, byteOffset[, length]])
+
+    arrayBuffer &lt;ArrayBuffer&gt; 一个 ArrayBuffer，或一个 TypedArray 的 .buffer 属性。
+    byteOffset &lt;integer&gt; 开始拷贝的索引。默认为 0。
+    length &lt;integer&gt; 拷贝的字节数。默认为 arrayBuffer.length - byteOffset。
+    该方法将创建一个 ArrayBuffer 的视图，而不会复制底层内存。例如，当传入一个 TypedArray 实例的 .buffer 属性的引用时，这个新建的 Buffer 会像 TypedArray 那样共享同一分配的内存。
+    let buf = Buffer.from(&apos;hello&apos;,&apos;utf8&apos;);
+    console.log(buf);
+
++ 类方法：Buffer.from(array)
+
+    通过一个八位字节的 array 创建一个新的 Buffer 。
+    let buf = Buffer.from([0x62, 0x75, 0x66, 0x66, 0x65, 0x72]);
+    console.log(buf.toString());
+</code></pre><h3 id="2-、静态方法"><a href="#2-、静态方法" class="headerlink" title="(2)、静态方法"></a>(2)、静态方法</h3><pre><code>    - 类方法：Buffer.isEncoding(encoding)
+
+            如果 encoding 是一个支持的字符编码则返回 true，否则返回 false 。
+            encoding &lt;string&gt; 一个要检查的字符编码名称
+            返回: &lt;boolean&gt;
+
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">console</span>.log(Buffer.isEncoding(<span class="string">'utf8'</span>));  <span class="comment">// true</span></div><div class="line">    <span class="built_in">console</span>.log(Buffer.isEncoding(<span class="string">'gbk'</span>));   <span class="comment">// false</span></div></pre></td></tr></table></figure>
+
+    - 类方法：Buffer.isBuffer(obj)
+
+            obj &lt;Object&gt;
+            返回: &lt;boolean&gt;
+            如果 obj 是一个 Buffer 则返回 true ，否则返回 false 。
+
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="keyword">let</span> buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    <span class="built_in">console</span>.log(Buffer.isBuffer(buf));  <span class="comment">// true</span></div><div class="line">    <span class="built_in">console</span>.log(Buffer.isBuffer(&#123;&#125;));   <span class="comment">// false</span></div></pre></td></tr></table></figure>
+
+    - 类方法：Buffer.byteLength(string[, encoding])
+
+            返回一个字符串的实际字节长度。 这与 String.prototype.length 不同，因为那返回字符串的字符数。
+            string: &lt;string&gt; | &lt;Buffer&gt; | &lt;TypedArray&gt; | &lt;DataView&gt; | &lt;ArrayBuffer&gt; 要计算长度的值
+            encoding :&lt;string&gt; 如果 string 是字符串，则这是它的字符编码。 默认: &apos;utf8&apos;
+            返回: &lt;integer&gt; string 包含的字节数
+
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="keyword">let</span> buf = Buffer.from(<span class="string">'中国'</span>,<span class="string">'ascii'</span>);</div><div class="line">    <span class="built_in">console</span>.log(Buffer.byteLength(buf));   <span class="comment">// 2</span></div><div class="line">    <span class="built_in">console</span>.log(buf.toString());   <span class="comment">// 乱码</span></div></pre></td></tr></table></figure>
+
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="keyword">let</span> buf = Buffer.from(<span class="string">'中国'</span>,<span class="string">'utf8'</span>);</div><div class="line">    <span class="built_in">console</span>.log(Buffer.byteLength(buf));   <span class="comment">// 2</span></div><div class="line">    <span class="built_in">console</span>.log(buf.toString());   <span class="comment">// 中国</span></div></pre></td></tr></table></figure>
+
+    - 类方法：Buffer.concat(list[, totalLength])
+
+            返回一个合并了 list 中所有 Buffer 实例的新建的 Buffer 。
+            list &lt;Array&gt; 要合并的 Buffer 或 Uint8Array 实例的数组
+            totalLength &lt;integer&gt; 合并时 list 中 Buffer 实例的总长度
+            返回: &lt;Buffer&gt;
+
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg：<span class="keyword">let</span> buf1 = Buffer.alloc(<span class="number">3</span>);</div><div class="line">    <span class="keyword">let</span> buf2 = Buffer.alloc(<span class="number">5</span>);</div><div class="line">    <span class="keyword">let</span> buf3 = Buffer.concat([buf1,buf2]);</div><div class="line">    <span class="built_in">console</span>.log(Buffer.byteLength(buf3));   <span class="comment">// 8</span></div></pre></td></tr></table></figure>
+
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">eg: <span class="keyword">let</span> buf1 = Buffer.from(<span class="string">'tom'</span>);</div><div class="line">    <span class="keyword">let</span> buf2 = Buffer.from(<span class="string">'jerry'</span>);</div><div class="line">    <span class="keyword">let</span> buf3 = Buffer.concat([buf1,buf2]);</div><div class="line">    <span class="built_in">console</span>.log(Buffer.byteLength(buf3));   <span class="comment">// 8</span></div><div class="line">    <span class="built_in">console</span>.log(buf3.toString());           <span class="comment">// tomjerry</span></div></pre></td></tr></table></figure>
+
+### (3)、实例方法
+
+        - buf.write(string[, offset[, length]][, encoding]):
+
+            根据 encoding 的字符编码写入 string 到 buf 中的 offset 位置。 length 参数是写入的字节数。 如果 buf 没有足够的空间保存整个字符串，则只会写入 string 的一部分。 只部分解码的字符不会被写入。
+            string &lt;string&gt; 要写入 buf 的字符串
+            offset &lt;integer&gt; 开始写入 string 的位置。默认: 0
+            length &lt;integer&gt; 要写入的字节数。默认: buf.length - offset
+            encoding &lt;string&gt; string 的字符编码。默认: &apos;utf8&apos;
+            返回: &lt;integer&gt; 写入的字节数
+
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: <span class="keyword">let</span> buf = Buffer.alloc(<span class="number">5</span>);</div><div class="line">    buf.write(<span class="string">'hello'</span>,<span class="number">2</span>,<span class="number">2</span>);  <span class="comment">//从索引2开始写入，写入2个</span></div><div class="line">    <span class="built_in">console</span>.log(buf);      <span class="comment">//  &lt;Buffer 00 00 68 65 00&gt;</span></div><div class="line">    <span class="built_in">console</span>.log(buf.toString()); <span class="comment">//he</span></div></pre></td></tr></table></figure>
+
+        - buf.slice([start[, end]])
+            返回一个指向相同原始内存的新建的 Buffer，但做了偏移且通过 start 和 end 索引进行裁剪。
+            start &lt;integer&gt; 新建的 Buffer 开始的位置。 默认: 0
+            end &lt;integer&gt; 新建的 Buffer 结束的位置（不包含）。 默认: buf.length
+            返回: &lt;Buffer&gt;
+
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: <span class="keyword">let</span> buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    <span class="keyword">let</span> buf1 = buf.slice(<span class="number">2</span>,<span class="number">3</span>);    <span class="comment">// 从索引2裁剪到索引3</span></div><div class="line">    <span class="built_in">console</span>.log(buf === buf1);<span class="comment">//false</span></div><div class="line">    <span class="built_in">console</span>.log(buf1.toString());  <span class="comment">// l</span></div></pre></td></tr></table></figure>
+
+        - buf.toJSON()
+            toJSON方法不需要显式调用，当JSON.stringify方法调用的时候会自动调用toJSON方法
+            返回 buf 的 JSON 格式。 当字符串化一个 Buffer 实例时，JSON.stringify() 会隐式地调用该函数。
+
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="keyword">const</span> buf = Buffer.from([<span class="number">0x1</span>, <span class="number">0x2</span>, <span class="number">0x3</span>, <span class="number">0x4</span>, <span class="number">0x5</span>]);</div><div class="line">    <span class="keyword">const</span> json = <span class="built_in">JSON</span>.stringify(buf);</div><div class="line">    <span class="built_in">console</span>.log(json);    <span class="comment">// &#123;"type":"Buffer","data":[1,2,3,4,5]&#125;</span></div></pre></td></tr></table></figure>
+
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="keyword">const</span> buf = Buffer.from(<span class="string">'hello'</span>);</div><div class="line">    <span class="keyword">const</span> json = <span class="built_in">JSON</span>.stringify(buf);</div><div class="line">    <span class="built_in">console</span>.log(json);       <span class="comment">// &#123;"type":"Buffer","data":[104,101,108,108,111]&#125; (十进制代码)</span></div></pre></td></tr></table></figure>
+</code></pre><h2 id="2-path-路径操作"><a href="#2-path-路径操作" class="headerlink" title="2. path 路径操作"></a>2. path 路径操作</h2><p>进行路径操作之前要对path 进行引入 ：const path = require(‘path’);</p>
+<p>在linux 系统中 路径 只能用 / 表示 ；<br>在windows 系统中 可以用 / 和 \ 都可以，但是 \ 代表转义字符，所以我们也可以用 \ 表示</p>
+<pre><code>### 1.path.basename(path[, ext])  ： 获取路径的最后一部分
+        path &lt;string&gt;
+        ext &lt;string&gt; 可选的文件扩展名
+        返回: &lt;string&gt;
+
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">console</span>.log(path.basename(<span class="string">'/foo/bar/baz/asdf/quux.html'</span>));  <span class="comment">//  quux.html</span></div><div class="line">    <span class="built_in">console</span>.log(path.basename(<span class="string">'/foo/bar/baz/asdf/quux.html'</span>, <span class="string">'.html'</span>));  <span class="comment">//quux</span></div></pre></td></tr></table></figure>
+
+### 2.path.dirname(path)  :获取路径
+        path.dirname() 方法返回一个 path 的目录名
+
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">console</span>.log(__dirname);          <span class="comment">//// 打印的是当前文件所在的目录，不包括文件名</span></div><div class="line">    <span class="built_in">console</span>.log(path.dirname(<span class="string">'/abc/qqq/www/abc'</span>));  <span class="comment">///abc/qqq/www</span></div></pre></td></tr></table></figure>
+
+### 3.path.extname(path) :获取扩展名称
+        path.extname() 方法返回 path 的扩展名
+
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg:<span class="built_in">console</span>.log(path.extname(<span class="string">'index.html'</span>));  <span class="comment">// .html</span></div></pre></td></tr></table></figure>
+
+### 4.路径的格式化处理
+        path.format(pathObject)  方法会从一个对象返回一个路径字符串。 obj-&gt;string  与 path.parse() 相反。
+        path.parse() path.parse() 方法返回一个对象，对象的属性表示 path 的元素。 string-&gt;obj
+
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">eg:</div><div class="line">    <span class="keyword">let</span> obj = path.parse(__filename);</div><div class="line">    <span class="built_in">console</span>.log(obj);</div><div class="line">    <span class="built_in">console</span>.log(obj.base);</div><div class="line">    <span class="comment">/*&#123; root: 'G:\\',</span></div><div class="line"><span class="comment">      dir: 'G:\\传智播客\\代码\\就业班\\nodejs\\2',</span></div><div class="line"><span class="comment">      base: '04.js',</span></div><div class="line"><span class="comment">      ext: '.js',</span></div><div class="line"><span class="comment">      name: '04' &#125;*/</span></div><div class="line">    <span class="comment">//04.js</span></div></pre></td></tr></table></figure>
+
+### 5.path.isAbsolute(path) :判断是否为绝对路径
+
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">console</span>.log(path.isAbsolute(<span class="string">'/foo/bar'</span>));  <span class="comment">// true</span></div><div class="line">    <span class="built_in">console</span>.log(path.isAbsolute(<span class="string">'C:/foo/..'</span>));  <span class="comment">//true</span></div><div class="line">    path.isAbsolute(<span class="string">'qux/'</span>);     <span class="comment">// false</span></div><div class="line">    path.isAbsolute(<span class="string">'.'</span>);        <span class="comment">// false</span></div></pre></td></tr></table></figure>
+
+### 6.path.join([...paths]) :拼接路径（..表示上层路径；.表示当前路径）,在连接路径的时候会格式化路径
+
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">console</span>.log(path.join(<span class="string">'/foo'</span>, <span class="string">'bar'</span>, <span class="string">'baz/asdf'</span>, <span class="string">'quux'</span>, <span class="string">'../../'</span>)); <span class="comment">//\foo\bar\baz\</span></div></pre></td></tr></table></figure>
+
+### 7.path.normalize(path) ：规范化路径
+    path.normalize() 方法会规范化给定的 path，并解析 &apos;..&apos; 和 &apos;.&apos; 片段。
+
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg：<span class="built_in">console</span>.log(path.normalize(<span class="string">'/foo/bar//baz/asdf/quux/..'</span>));  <span class="comment">//  \foo\bar\baz\asdf</span></div><div class="line">    <span class="built_in">console</span>.log(path.normalize(<span class="string">'C:\\temp\\\\foo\\bar\\..\\'</span>));  <span class="comment">//  C:\temp\foo\</span></div></pre></td></tr></table></figure>
+
+### 8.path.relative(from, to) 两个参数，计算两个路径的相对路径
+
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg：<span class="built_in">console</span>.log(path.relative(<span class="string">'/data/orandea/test/aaa'</span>, <span class="string">'/data/orandea/impl/bbb'</span>)); <span class="comment">//  ..\..\impl\bbb</span></div><div class="line">    <span class="built_in">console</span>.log(path.relative(<span class="string">'C:\\orandea\\test\\aaa'</span>, <span class="string">'C:\\orandea\\impl\\bbb'</span>)); <span class="comment">// ..\..\impl\bbb</span></div></pre></td></tr></table></figure>
+
+### 9.path.resolve([...paths])  :path.resolve() 方法会把一个路径或路径片段的序列解析为一个绝对路径。
+
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">console</span>.log(path.resolve(<span class="string">'wwwroot'</span>, <span class="string">'static_files/png/'</span>, <span class="string">'../gif/image.gif'</span>));</div><div class="line"><span class="comment">// G:\传智播客\代码\就业班\nodejs\2\wwwroot\static_files\gif\image.gif</span></div></pre></td></tr></table></figure>
+
+### 10. 两个特殊属性
+    path.delimiter  :    环境变量分隔符(windows中使用; linux中使用:)
+    path.sep      :   表示路径分隔符（windows是\ Linux是/）
+
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eg: <span class="built_in">console</span>.log(path.delimiter);<span class="comment">//  : 或 ;</span></div><div class="line">    <span class="built_in">console</span>.log(path.sep);<span class="comment">//  \   或   /</span></div></pre></td></tr></table></figure>
+</code></pre><h2 id="3-异步I-O-input-output"><a href="#3-异步I-O-input-output" class="headerlink" title="3.异步I/O input/output"></a>3.异步I/O input/output</h2><pre><code>-1、文件操作
+-2、网络操作
+
+
+在浏览器中也存在异步操作：
+    -1、定时任务
+    -2、事件处理
+    -3、Ajax回调处理
+
+js的运行时单线程的,引入事件队列机制;
+    -Node.js中的事件模型与浏览器中的事件模型类似 : 单线程+事件队列
+
+Node.js中异步执行的任务：  (基于回调函数的编码风格)
+    -1、文件I/O
+    -2、网络I/O
+
+### 1.文件操作-查看文件状态
+    fs ：File System(文件系统)
+    首先要引入fs  ; const fs = require(&apos;fs&apos;);
+    -异步操作：
+        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">fs.stat(<span class="string">'./abc'</span>,(err,stats) =&gt; &#123;</div><div class="line">    <span class="comment">// 一般回调函数的第一个参数是错误对象，如果err为null,表示没有错误，否则表示报错了</span></div><div class="line">    <span class="keyword">if</span>(err) <span class="keyword">return</span>;</div><div class="line">    <span class="keyword">if</span>(stats.isFile())&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'文件'</span>);</div><div class="line">    &#125;<span class="keyword">else</span> <span class="keyword">if</span>(stats.isDirectory())&#123;</div><div class="line">        <span class="built_in">console</span>.log(<span class="string">'目录'</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="built_in">console</span>.log(stats);</div><div class="line"></div><div class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</div><div class="line">&#125;);</div><div class="line"><span class="built_in">console</span>.log(<span class="number">3</span>);</div></pre></td></tr></table></figure>
+
+        fs.stat(path, callback) ：检查一个文件是否存在，异步的 stat(2)。
+        回调有两个参数 (err, stats) 其中 stats 是一个 fs.Stats 对象。
+
+        Stat 时间值:
+            atime 文件访问时间
+            ctime 文件的状态信息发生变化的时间（比如文件的权限）
+            mtime 文件数据发生变化的时间
+            birthtime 文件创建的时间
+
+        fs.Stats 类
+
+            -stats.isFile()    -------&gt;    如果是文件返回 true，否则返回 false。
+            -stats.isDirectory()    ------&gt;  如果是目录返回 true，否则返回 false。
+            -stats.isBlockDevice()   -------&gt;  如果是块设备返回 true，否则返回 false。
+            -stats.isCharacterDevice()  -------&gt;  如果是字符设备返回 true，否则返回 false。
+            -stats.isSymbolicLink() (仅对 fs.lstat() 有效)  -------&gt;  如果是软链接返回 true，否则返回    false。
+            -stats.isFIFO()   -------&gt;  如果是FIFO，返回true，否则返回。    -false。FIFO是UNIX中的一种特殊类型的命令管道。
+            -stats.isSocket()  -------&gt;  如果是 Socket 返回 true，否则返回 false。
+
+    同步操作：
+    fs.statSync(path)  : 返回一个 fs.Stats 实例。
+
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eg: <span class="keyword">let</span> ret = fs.statSync(<span class="string">'./data.txt'</span>);</div><div class="line">    <span class="built_in">console</span>.log(ret);</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">2</span>);</div></pre></td></tr></table></figure>
+
+### 2.读文件操作
+    首先引入我们需要的：
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>);</div><div class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>);</div></pre></td></tr></table></figure>
+
+    异步操作：
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> strpath = path.join(__dirname,<span class="string">'data.txt'</span>);</div><div class="line">fs.readFile(strpath,(err,data)=&gt;&#123;</div><div class="line">    <span class="keyword">if</span>(err) <span class="keyword">return</span>;</div><div class="line">    <span class="built_in">console</span>.log(data.toString());</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+    如果有第二个参数并且是编码，那么回调函数获取到的数据就是字符串
+    如果没有第二个参数，那么得到的就是Buffer实例对象
+
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">fs.readFile(strpath,<span class="string">'utf8'</span>,(err,data)=&gt;&#123;</div><div class="line">    <span class="keyword">if</span>(err) <span class="keyword">return</span>;</div><div class="line">    <span class="comment">// console.log(data.toString());</span></div><div class="line">    <span class="built_in">console</span>.log(data);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+
+    同步操作：
+    <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> ret = fs.readFileSync(strpath,<span class="string">'utf8'</span>);</div><div class="line"><span class="built_in">console</span>.log(ret);</div></pre></td></tr></table></figure>
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/06/05/node-js/">node js</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">耿文娟</a></p>
+        <p><span>发布时间:</span>2017-06-05, 11:32:06</p>
+        <p><span>最后更新:</span>2017-08-28, 19:51:35</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/05/node-js/" title="node js">http://yoursite.com/2017/06/05/node-js/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/06/05/node-js/　　作者: 耿文娟" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
+        </p>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
+    </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/06/12/nodejs案例(json + 后台渲染)思路分析/">
+                    nodejs 案例思路分析（json文件+后台渲染）
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2017/06/03/node Js概述/">
+                    Node.js是做什么的
+                </a>
+            </div>
+        
+    </nav>
+
+  
+</article>
+
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-全局对象-Buffer的基本操作"><span class="toc-number">1.1.</span> <span class="toc-text">1. 全局对象 Buffer的基本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-、构造方法（类）"><span class="toc-number">1.1.1.</span> <span class="toc-text">(1)、构造方法（类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-、静态方法"><span class="toc-number">1.1.2.</span> <span class="toc-text">(2)、静态方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-path-路径操作"><span class="toc-number">1.2.</span> <span class="toc-text">2. path 路径操作</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-异步I-O-input-output"><span class="toc-number">1.3.</span> <span class="toc-text">3.异步I/O input/output</span></a></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"node js　| wen　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
+
+
+
+
+
+
+
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://yoursite.com/2017/06/05/node-js/';
+            this.page.identifier = '2017/06/05/node-js/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
+
+</section>
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/06/12/nodejs案例(json + 后台渲染)思路分析/" title="上一篇: nodejs 案例思路分析（json文件+后台渲染）">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2017/06/03/node Js概述/" title="下一篇: Node.js是做什么的">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/08/28/webpack 配置文件/">webpack 配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/29/blog/">blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/29/你好/">你好</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/14/nodejs案例(mysql + 前端渲染)思路分析/">nodejs 案例思路分析（数据库+前端渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/13/nodejs案例(mysql + 后台渲染)思路分析/">nodejs 案例思路分析（数据库+后台渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/nodejs案例(json + 后台渲染)思路分析/">nodejs 案例思路分析（json文件+后台渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/node-js/">node js</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/03/node Js概述/">Node.js是做什么的</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/29/MySQL语句/">MYSQL 语句</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/github创建多个blog/">github 创建多个blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/hexo+github创建属于自己的博客/">hexo+github创建属于自己的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
+</div>
+      <footer id="footer">
+    <div class="outer">
+        <div id="footer-info">
+            <div class="footer-left">
+                <i class="fa fa-copyright"></i> 
+                2016-2017 耿文娟
+            </div>
+            <div class="footer-right">
+                <a href="http://hexo.io/" target="_blank" title="快速、简洁且高效的博客框架">Hexo</a>  Theme <a href="https://github.com/MOxFIVE/hexo-theme-yelee" target="_blank" title="简而不减 Hexo 双栏博客主题  v3.5">Yelee</a> by MOxFIVE <i class="fa fa-heart animated infinite pulse"></i>
+            </div>
+        </div>
+        
+            <div class="visit">
+                
+                    <span id="busuanzi_container_site_pv" style='display:none'>
+                        <span id="site-visit" title="本站到访数"><i class="fa fa-user" aria-hidden="true"></i><span id="busuanzi_value_site_uv"></span>
+                        </span>
+                    </span>
+                
+                
+                    <span>| </span>
+                
+                
+                    <span id="busuanzi_container_page_pv" style='display:none'>
+                        <span id="page-visit"  title="本页阅读量"><i class="fa fa-eye animated infinite pulse" aria-hidden="true"></i><span id="busuanzi_value_page_pv"></span>
+                        </span>
+                    </span>
+                
+            </div>
+        
+    </div>
+</footer>
+    </div>
+    
+<script data-main="/js/main.js" src="//cdn.bootcss.com/require.js/2.2.0/require.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            var iPad = window.navigator.userAgent.indexOf('iPad');
+            if (iPad > -1 || $(".left-col").css("display") === "none") {
+                var bgColorList = ["#9db3f4", "#414141", "#e5a859", "#f5dfc6", "#c084a0", "#847e72", "#cd8390", "#996731"];
+                var bgColor = Math.ceil(Math.random() * (bgColorList.length - 1));
+                $("body").css({"background-color": bgColorList[bgColor], "background-size": "cover"});
+            }
+            else {
+                var backgroundnum = 10;
+                var backgroundimg = "url(/background/bg-x.jpg)".replace(/x/gi, Math.ceil(Math.random() * backgroundnum));
+                $("body").css({"background": backgroundimg, "background-attachment": "fixed", "background-size": "cover"});
+            }
+        })
+    </script>
+
+
+
+
+
+<div class="scroll" id="scroll">
+    <a href="#" title="返回顶部"><i class="fa fa-arrow-up"></i></a>
+    <a href="#comments" onclick="load$hide();" title="查看评论"><i class="fa fa-comments-o"></i></a>
+    <a href="#footer" title="转到底部"><i class="fa fa-arrow-down"></i></a>
+</div>
+<script>
+    // Open in New Window
+    
+        var oOpenInNew = {
+            
+             title: "a.article-title, .article-more-link a", 
+             post: ".article-entry a[href], .copyright a[href]", 
+             tags: ".article-tag a", 
+             categories: ".article-category a, a.tag-list-link", 
+             articleNav: "#article-nav a, #post-nav-button a", 
+             archives: ".archive-article-title", 
+             miniArchives: "a.post-list-link", 
+             menu: ".header-menu a", 
+             friends: "#js-friends a", 
+             socail: ".social a" 
+        }
+        for (var x in oOpenInNew) {
+            $(oOpenInNew[x]).attr("target", "_blank");
+        }
+    
+</script>
+
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+  </div>
+</body>
+</html>

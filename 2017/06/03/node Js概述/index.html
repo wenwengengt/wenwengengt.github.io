@@ -15,13 +15,17 @@
 
 
 
+<meta name="description" content="node Js 概述Node.js是做什么的">
+<meta name="keywords" content="个人博客,笔记本,前端拓展">
 <meta property="og:type" content="article">
-<meta property="og:title" content="blog">
-<meta property="og:url" content="http://yoursite.com/2017/07/29/blog/index.html">
+<meta property="og:title" content="Node.js是做什么的">
+<meta property="og:url" content="http://yoursite.com/2017/06/03/node Js概述/index.html">
 <meta property="og:site_name" content="wen">
-<meta property="og:updated_time" content="2017-07-29T14:11:52.600Z">
+<meta property="og:description" content="node Js 概述Node.js是做什么的">
+<meta property="og:updated_time" content="2017-08-28T11:51:43.983Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="blog">
+<meta name="twitter:title" content="Node.js是做什么的">
+<meta name="twitter:description" content="node Js 概述Node.js是做什么的">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -53,7 +57,7 @@
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>blog | wen</title>
+<title>Node.js是做什么的 | wen</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -273,11 +277,11 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap"><article id="post-blog" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-node Js概述" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2017/07/29/blog/" class="article-date">
-      <time datetime="2017-07-29T14:11:52.000Z" itemprop="datePublished">2017-07-29</time>
+      <a href="/2017/06/03/node Js概述/" class="article-date">
+      <time datetime="2017-06-03T02:30:06.000Z" itemprop="datePublished">2017-06-03</time>
 </a>
 
 
@@ -292,7 +296,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      blog
+      Node.js是做什么的
     </h1>
   
 
@@ -302,6 +306,10 @@
         
 
         
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
+    </div>
+
         <div class="clearfix"></div>
       </div>
       
@@ -309,7 +317,65 @@
     <div class="article-entry" itemprop="articleBody">
       
           
-        
+        <h2 id="node-Js-概述"><a href="#node-Js-概述" class="headerlink" title="node Js 概述"></a>node Js 概述</h2><h3 id="Node-js是做什么的"><a href="#Node-js是做什么的" class="headerlink" title="Node.js是做什么的"></a>Node.js是做什么的</h3><a id="more"></a>
+<p>我们以前写的页面只能在本地查看，如果你的朋友要查看，只能通过QQ之类的传送<br>我们以前做的只是叫demo,真正的网站是需要放在互联网上供全世界的人访问的<br>同一个网站有一堆的资料，全世界的人去访问根本不知道要访问哪一个<br>为了解决这个问题：服务器就应运而生</p>
+<pre><code>- QQ只在局域网内能不能正常使用
+- 服务器是一个运行在操作系统上的东西
+- 服务器最基本的作用就是对来自全国各地的客户端浏览器的请求进行响应，找到匹配的请求，然后找到对应的文件资源响应回去
+</code></pre><p>Node.js就是用来做服务器的</p>
+<pre><code>- 处理用户请求报文
+- 匹配到用户请求之后，去当前这个远程的电脑去找到对应的资源(html,img,css,json,jsonp）,读取出来里面的内容，返回给浏览器
+</code></pre><p>http协议</p>
+<p>总结：<br>    要做一个网站，前端只是整个过程中的一个环节(下面罗列的是传统的方式)<br>    老板(提出需求) –&gt; 产品经理(把需求落地|原型图) –&gt; 设计(psd) –&gt; 前端(切图、特效实现) –&gt; 后台(设计数据库、在数据库中填充假数据、用art-template之类的模板引擎把数据填充好之后，返回给前台浏览器供客户查看)</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>静态html文件准备好</p>
+<p>先考虑把首页做出来(不要一上来想着把整个项目做出来)</p>
+<pre><code>- 1. 先把服务器搭建出来(测试代码通过)
+- 2. 调用art-template模板引擎
+- 3. 把首页的html文件作为模板放到views文件夹当中
+- 4. 设置首页的路由(这里为了扩展方便，把router单独写在一个js文件当中，然后在index.js主模块当中引)
+- 5. 首页显示正常之后，我们考虑到数据不能写死，所以把数据放在一个data.json当中，然后通过require引入数据
+- 6. 改造index.art模板，把数据和模板组合成动态数据的页面显示到前台浏览器
+</code></pre><p>实现添加功能</p>
+<pre><code>- 1. 实现显示添加页面(思路同首页)
+- 2. 实现处理添加表单post请求
+</code></pre><p>实现编辑功能</p>
+<pre><code>- 1. 实现显示编辑页面(思路同添加功能)
+    + 这里要注意的是：编辑要实现的是点击哪一条数据，就会把要编辑的信息显示在表单中，这里关键点就是通过id来定位数据
+- 2. 实现处理编辑表单post请求
+</code></pre><p>实现删除功能</p>
+<p>由于把数据存到文件里面有各种问题(数据不好管理、不容易进行备份(有一门职业叫dba)),所以考虑使用数据库mysql</p>
+<pre><code>- 1. 引入数据库mysql包
+- 2. 改造文件读写操作部分的代码
+</code></pre><p>其实前面这种方式是比较传统的方式</p>
+<pre><code>+ 前后端分离
+    - 1. 最早的时候一个网站是一个人在写，同时负责前后端
+    - 2. 随着网站的越来越复杂，一个人满足不了需求，于是前端后端进行分离(前端负责视觉、后端负责业务逻辑和数据库操作)，人员分离意味着职责的分离
+
+    - &lt;span&gt;&lt;/span&gt;    jsp,smarty... (本地配置java环境)
+
+
+    - 3. 但是，前端后在很长一段时间内并没有做到真正的分离，在前几年在大部分大的公司里面的开发模式也是：前端页面写好之后 --&gt; 后台告诉你数据长什么样子 --&gt; 有的公司是前端负责把html文件改造成模板文件，有的公司是后端负责把html文件改造成模板文件 --&gt; 这里面不可避免的会出现的问题是如果由前端负责处理的话，需要重新学一门模板语言(jsp,smarty等)，如果由后端负责的话极容易把页面的标签结构搞错了，甚至有些自作聪明的后端觉得你的某句关键性的空标签没有用直接删除了(这个时代本质上是服务器端渲染ssr)
+
+    - 4. ajax的流行改变了这一切，越来越多的公司习惯性的让后端只负责产出json数据，前端通过ajax进行数据的获取和拼接，实现了真正的前后端分离(前端渲染)
+</code></pre><p>restful</p>
+<pre><code>+ 优点：不需要看代码或者猜测，直接看header头信息就知道当前的请求报文要做什么事情
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">GET（SELECT）：从服务器取出资源（一项或多项）。</div><div class="line">POST（CREATE）：在服务器新建一个资源。</div><div class="line">PUT（UPDATE）：在服务器更新资源（客户端提供改变后的完整资源）。</div><div class="line">DELETE（DELETE）：从服务器删除资源。</div><div class="line"></div><div class="line">GET /zoos：列出所有动物园</div><div class="line">POST /zoos：新建一个动物园</div><div class="line">GET /zoos/ID：获取某个指定动物园的信息</div><div class="line">PUT /zoos/ID：更新某个指定动物园的信息（提供该动物园的全部信息）</div><div class="line"></div><div class="line"></div><div class="line">/zoos?id=2 --&gt; req.query</div><div class="line">/zoos/2 --&gt;同时后台是用restful风格设计api --&gt;  req.params</div><div class="line"></div><div class="line">app.put(&apos;/zoos/:id&apos;,function(req,res)&#123;&#125;)</div><div class="line"></div><div class="line"></div><div class="line">DELETE /zoos/ID：删除某个动物园</div><div class="line">GET /zoos/ID/animals：列出某个指定动物园的所有动物</div><div class="line">DELETE /zoos/ID/animals/ID：删除某个指定动物园的指定动物</div></pre></td></tr></table></figure>
+<h3 id="现实：http-bbs-csdn-net-topics-390944890"><a href="#现实：http-bbs-csdn-net-topics-390944890" class="headerlink" title="现实：http://bbs.csdn.net/topics/390944890"></a>现实：<a href="http://bbs.csdn.net/topics/390944890" target="_blank" rel="external">http://bbs.csdn.net/topics/390944890</a></h3><p>老板(提出需求) –&gt; 产品经理(把需求落地|原型图) –&gt; 设计(psd) –&gt; 前端(切图、特效实现) –&gt; 后台(设计数据库、在数据库中填充假数据、用art-template之类的模板引擎把数据填充好之后，返回给前台浏览器供客户查看)</p>
+<p>老板(提出需求) –&gt; 产品经理(把需求落地|原型图) –&gt; 设计(psd)<br>    —-&gt; 后台(php,java,node.js):开发api接口<br>    —-&gt; 切图、特效实现 –&gt; 测试api接口 —&gt; 通过ajax请求数据实现最终的效果</p>
+<p>*</p>
+<ul>
+<li>阿里云服务器(linux)</li>
+<li>heroku</li>
+<li>新浪sae</li>
+</ul>
+<p>在线聊天 –&gt; socket.io</p>
+<p>server side render (ssr) –&gt; 服务器渲染</p>
+<pre><code>+ 从数据库里面获取数据 --&gt; 在后台使用art-template把数据组装 --&gt; 渲染到前台浏览器
++ client side rnder --&gt; 客户端渲染
++ 从数据库里面获取数据 --&gt; 通过res.json或res.jsonp提供api接口(后端)
++ 切图、特效 --&gt; ajax请求接口
++ ios,android,web --&gt; 只有一个后台
+</code></pre>
       
     </div>
     
@@ -317,13 +383,13 @@
   
     
     <div class="copyright">
-        <p><span>本文标题:</span><a href="/2017/07/29/blog/">blog</a></p>
+        <p><span>本文标题:</span><a href="/2017/06/03/node Js概述/">Node.js是做什么的</a></p>
         <p><span>文章作者:</span><a href="/" title="回到主页">耿文娟</a></p>
-        <p><span>发布时间:</span>2017-07-29, 22:11:52</p>
-        <p><span>最后更新:</span>2017-07-29, 22:11:52</p>
+        <p><span>发布时间:</span>2017-06-03, 10:30:06</p>
+        <p><span>最后更新:</span>2017-08-28, 19:51:43</p>
         <p>
-            <span>原始链接:</span><a class="post-url" href="/2017/07/29/blog/" title="blog">http://yoursite.com/2017/07/29/blog/</a>
-            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/07/29/blog/　　作者: 耿文娟" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <span>原始链接:</span><a class="post-url" href="/2017/06/03/node Js概述/" title="Node.js是做什么的">http://yoursite.com/2017/06/03/node Js概述/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/06/03/node Js概述/　　作者: 耿文娟" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
             <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
         <p>
@@ -336,15 +402,15 @@
     <nav id="article-nav">
         
             <div id="article-nav-newer" class="article-nav-title">
-                <a href="/2017/08/28/webpack 配置文件/">
-                    
+                <a href="/2017/06/05/node-js/">
+                    node js
                 </a>
             </div>
         
         
             <div id="article-nav-older" class="article-nav-title">
-                <a href="/2017/07/29/你好/">
-                    
+                <a href="/2017/05/29/MySQL语句/">
+                    MYSQL 语句
                 </a>
             </div>
         
@@ -356,7 +422,7 @@
     <div id="toc" class="toc-article">
         <strong class="toc-title">文章目录</strong>
         
-            
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#node-Js-概述"><span class="toc-number">1.</span> <span class="toc-text">node Js 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Node-js是做什么的"><span class="toc-number">1.1.</span> <span class="toc-text">Node.js是做什么的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#思路"><span class="toc-number">1.2.</span> <span class="toc-text">思路</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#现实：http-bbs-csdn-net-topics-390944890"><span class="toc-number">1.3.</span> <span class="toc-text">现实：http://bbs.csdn.net/topics/390944890</span></a></li></ol></li></ol>
         
     </div>
     <style>
@@ -392,7 +458,7 @@
         </div>
         <script>
             window._bd_share_config={
-                "common":{"bdSnsKey":{},"bdText":"blog　| wen　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+                "common":{"bdSnsKey":{},"bdText":"Node.js是做什么的　| wen　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
         </script>
     
 
@@ -411,8 +477,8 @@
     <div id="disqus_thread"></div>
     <script>
         var disqus_config = function(){
-            this.page.url = 'http://yoursite.com/2017/07/29/blog/';
-            this.page.identifier = '2017/07/29/blog/';
+            this.page.url = 'http://yoursite.com/2017/06/03/node Js概述/';
+            this.page.identifier = '2017/06/03/node Js概述/';
         };
         var loadComment = function(){
             var d = document, s = d.createElement('script');
@@ -434,7 +500,7 @@
 
     <div class="scroll" id="post-nav-button">
         
-            <a href="/2017/08/28/webpack 配置文件/" title="上一篇: ">
+            <a href="/2017/06/05/node-js/" title="上一篇: node js">
                 <i class="fa fa-angle-left"></i>
             </a>
         
@@ -442,7 +508,7 @@
         <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
 
         
-            <a href="/2017/07/29/你好/" title="下一篇: ">
+            <a href="/2017/05/29/MySQL语句/" title="下一篇: MYSQL 语句">
                 <i class="fa fa-angle-right"></i>
             </a>
         
