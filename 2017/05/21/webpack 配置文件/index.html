@@ -14,16 +14,18 @@
 <meta name="author" content="耿文娟" />
 
 
-    
-    
 
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="wen">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="webpack配置文件webpack介绍 webpack是一个资源的打包工具，分为1.0和2.0版本，可以将 .js, .css , image等静态资源当做一个模块来进行打包，那么每一种模块都是有一个对应的 loader来实现 webpack 1.0版本官网： webpack 2.0版本官网： 在这个项目中使用webpack 1.14.0 node环境的安装  12345678&amp;lt;!-- m">
+<meta name="keywords" content="个人博客,笔记本,前端拓展,攻城狮">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack配置文件">
+<meta property="og:url" content="http://yoursite.com/2017/05/21/webpack 配置文件/index.html">
 <meta property="og:site_name" content="wen">
+<meta property="og:description" content="webpack配置文件webpack介绍 webpack是一个资源的打包工具，分为1.0和2.0版本，可以将 .js, .css , image等静态资源当做一个模块来进行打包，那么每一种模块都是有一个对应的 loader来实现 webpack 1.0版本官网： webpack 2.0版本官网： 在这个项目中使用webpack 1.14.0 node环境的安装  12345678&amp;lt;!-- m">
+<meta property="og:updated_time" content="2017-08-28T13:00:32.713Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wen">
+<meta name="twitter:title" content="webpack配置文件">
+<meta name="twitter:description" content="webpack配置文件webpack介绍 webpack是一个资源的打包工具，分为1.0和2.0版本，可以将 .js, .css , image等静态资源当做一个模块来进行打包，那么每一种模块都是有一个对应的 loader来实现 webpack 1.0版本官网： webpack 2.0版本官网： 在这个项目中使用webpack 1.14.0 node环境的安装  12345678&amp;lt;!-- m">
 
 <link rel="apple-touch-icon" href= "/apple-touch-icon.png">
 
@@ -51,13 +53,11 @@
 <link rel="stylesheet" href="/css/style.css">
 
 
-    <style> .article { opacity: 0;} </style>
-
 
 <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
 
 
-<title>wen</title>
+<title>webpack配置文件 | wen</title>
 
 <script src="//cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
 <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
@@ -66,8 +66,8 @@
     var yiliaConfig = {
         fancybox: true,
         animate: true,
-        isHome: true,
-        isPost: false,
+        isHome: false,
+        isPost: true,
         isArchive: false,
         isTag: false,
         isCategory: false,
@@ -277,523 +277,7 @@
     </div>
     <link class="menu-list" tags="标签" friends="友情链接" about="关于我"/>
 </nav>
-      <div class="body-wrap">
-  
-    <article id="post-blog" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/07/29/blog/" class="article-date">
-      <time datetime="2017-07-29T14:11:52.000Z" itemprop="datePublished">2017-07-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/29/blog/">blog</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-你好" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/07/29/你好/" class="article-date">
-      <time datetime="2017-07-29T12:51:22.086Z" itemprop="datePublished">2017-07-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-        <h1 id="hello-World"><a href="#hello-World" class="headerlink" title="hello World"></a>hello World</h1><p>h1</p>
-<h2 id="hello-World-1"><a href="#hello-World-1" class="headerlink" title="hello World"></a>hello World</h2><p>h2</p>
-<ul>
-<li>1</li>
-<li>2</li>
-<li>3</li>
-<li>4</li>
-</ul>
-<ul>
-<li></li>
-</ul>
-<ul>
-<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">hello World</div></pre></td></tr></table></figure></li>
-</ul>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-nodejs案例(mysql + 前端渲染)思路分析" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/14/nodejs案例(mysql + 前端渲染)思路分析/" class="article-date">
-      <time datetime="2017-06-14T08:05:06.000Z" itemprop="datePublished">2017-06-14</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/14/nodejs案例(mysql + 前端渲染)思路分析/">nodejs 案例思路分析（数据库+前端渲染）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="nodejs-案例思路分析（连接数据库，对数据库操作）-前端渲染"><a href="#nodejs-案例思路分析（连接数据库，对数据库操作）-前端渲染" class="headerlink" title="nodejs 案例思路分析（连接数据库，对数据库操作）(前端渲染)"></a>nodejs 案例思路分析（连接数据库，对数据库操作）(前端渲染)</h2><h3 id="1-建立工作环境-建一个工作文件夹"><a href="#1-建立工作环境-建一个工作文件夹" class="headerlink" title="1.建立工作环境,(建一个工作文件夹)"></a>1.建立工作环境,(建一个工作文件夹)</h3><h3 id="2-npm-init-y-初始化配置-生成一个package-json文件"><a href="#2-npm-init-y-初始化配置-生成一个package-json文件" class="headerlink" title="2.npm init -y; 初始化配置,生成一个package.json文件"></a>2.npm init -y; 初始化配置,生成一个package.json文件</h3><h3 id="3-安装所有依赖的包"><a href="#3-安装所有依赖的包" class="headerlink" title="3.安装所有依赖的包"></a>3.安装所有依赖的包</h3><pre><code>- 1.express
-- 2.art-template
-- 3.express-art-template
-- 4.body-parser
-</code></pre>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/攻城狮/">攻城狮</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/06/14/nodejs案例(mysql + 前端渲染)思路分析/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-nodejs案例(mysql + 后台渲染)思路分析" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/13/nodejs案例(mysql + 后台渲染)思路分析/" class="article-date">
-      <time datetime="2017-06-13T06:15:06.000Z" itemprop="datePublished">2017-06-13</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/13/nodejs案例(mysql + 后台渲染)思路分析/">nodejs 案例思路分析（数据库+后台渲染）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="nodejs-案例思路分析（连接数据库，对数据库操作）-后台渲染"><a href="#nodejs-案例思路分析（连接数据库，对数据库操作）-后台渲染" class="headerlink" title="nodejs 案例思路分析（连接数据库，对数据库操作）(后台渲染)"></a>nodejs 案例思路分析（连接数据库，对数据库操作）(后台渲染)</h2><h3 id="1-建立工作环境-建一个工作文件夹"><a href="#1-建立工作环境-建一个工作文件夹" class="headerlink" title="1.建立工作环境,(建一个工作文件夹)"></a>1.建立工作环境,(建一个工作文件夹)</h3><h3 id="2-npm-init-y-初始化配置-生成一个package-json文件"><a href="#2-npm-init-y-初始化配置-生成一个package-json文件" class="headerlink" title="2.npm init -y; 初始化配置,生成一个package.json文件"></a>2.npm init -y; 初始化配置,生成一个package.json文件</h3><h3 id="3-安装所有依赖的包"><a href="#3-安装所有依赖的包" class="headerlink" title="3.安装所有依赖的包"></a>3.安装所有依赖的包</h3><pre><code>- 1.express
-- 2.art-template
-- 3.express-art-template
-- 4.body-parser
-</code></pre>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/攻城狮/">攻城狮</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/06/13/nodejs案例(mysql + 后台渲染)思路分析/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-nodejs案例(json + 后台渲染)思路分析" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/12/nodejs案例(json + 后台渲染)思路分析/" class="article-date">
-      <time datetime="2017-06-12T07:25:06.000Z" itemprop="datePublished">2017-06-12</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/12/nodejs案例(json + 后台渲染)思路分析/">nodejs 案例思路分析（json文件+后台渲染）</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="nodejs-案例思路分析（数据为json格式的本地文件）"><a href="#nodejs-案例思路分析（数据为json格式的本地文件）" class="headerlink" title="nodejs 案例思路分析（数据为json格式的本地文件）"></a>nodejs 案例思路分析（数据为json格式的本地文件）</h2><h3 id="1-建立工作环境-建一个工作文件夹"><a href="#1-建立工作环境-建一个工作文件夹" class="headerlink" title="1.建立工作环境,(建一个工作文件夹)"></a>1.建立工作环境,(建一个工作文件夹)</h3><h3 id="2-npm-init-y-初始化配置-生成一个package-json文件"><a href="#2-npm-init-y-初始化配置-生成一个package-json文件" class="headerlink" title="2.npm init -y; 初始化配置,生成一个package.json文件"></a>2.npm init -y; 初始化配置,生成一个package.json文件</h3><h3 id="3-安装所有依赖的包"><a href="#3-安装所有依赖的包" class="headerlink" title="3.安装所有依赖的包"></a>3.安装所有依赖的包</h3><pre><code>- 1.express
-- 2.art-template
-- 3.express-art-template
-- 4.body-parser
-</code></pre>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/06/12/nodejs案例(json + 后台渲染)思路分析/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-node-js" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/05/node-js/" class="article-date">
-      <time datetime="2017-06-05T03:32:06.000Z" itemprop="datePublished">2017-06-05</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/05/node-js/">node js</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h1 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h1><h2 id="1-全局对象-Buffer的基本操作"><a href="#1-全局对象-Buffer的基本操作" class="headerlink" title="1. 全局对象 Buffer的基本操作"></a>1. 全局对象 Buffer的基本操作</h2><p>Buffer本质上就是字节数组,   因为Buffer是全局对象，所以Buffer不需要引入;</p>
-<h3 id="1-、构造方法（类）"><a href="#1-、构造方法（类）" class="headerlink" title="(1)、构造方法（类）"></a>(1)、构造方法（类）</h3><pre><code>- 实例化buf对象:
-    + new Buffer(size):
-</code></pre>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/06/05/node-js/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-node Js概述" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/06/03/node Js概述/" class="article-date">
-      <time datetime="2017-06-03T02:30:06.000Z" itemprop="datePublished">2017-06-03</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/03/node Js概述/">Node.js是做什么的</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h2 id="node-Js-概述"><a href="#node-Js-概述" class="headerlink" title="node Js 概述"></a>node Js 概述</h2><h3 id="Node-js是做什么的"><a href="#Node-js是做什么的" class="headerlink" title="Node.js是做什么的"></a>Node.js是做什么的</h3>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/06/03/node Js概述/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-MySQL语句" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2017/05/29/MySQL语句/" class="article-date">
-      <time datetime="2017-05-29T00:50:06.000Z" itemprop="datePublished">2017-05-29</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/29/MySQL语句/">MYSQL 语句</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <p>包括几个方面：<br>  注册，登录，增 删 改 查</p>
-<h2 id="后台php："><a href="#后台php：" class="headerlink" title="后台php："></a>后台php：</h2><h3 id="0-php-设置"><a href="#0-php-设置" class="headerlink" title="0. php 设置"></a>0. php 设置</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">header(<span class="string">"content-type:text/html;charset=utf8"</span>);</div></pre></td></tr></table></figure>
-<p>设定要用的默认时区。自 PHP 5.1 可用：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">date_default_timezone_set(<span class="string">'PRC'</span>);</div></pre></td></tr></table></figure></p>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2017/05/29/MySQL语句/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-webpack 配置文件" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-webpack 配置文件" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2017/05/21/webpack 配置文件/" class="article-date">
@@ -811,12 +295,23 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/21/webpack 配置文件/">webpack配置文件</a>
+    <h1 class="article-title" itemprop="name">
+      webpack配置文件
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+
+        
+    <div class="article-tag tagcloud">
+        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/攻城狮/">攻城狮</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
+    </div>
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -930,87 +425,91 @@ less:  less-loader的依赖包
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/攻城狮/">攻城狮</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
-    </div>
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
   
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-github创建多个blog" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/12/github创建多个blog/" class="article-date">
-      <time datetime="2016-08-12T03:51:06.000Z" itemprop="datePublished">2016-08-12</time>
-</a>
-
-
-    </div>
-  
-  <div class="article-inner">
     
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/12/github创建多个blog/">github 创建多个blog</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-          
-              <h3 id="通过创建-gh-pages-分支"><a href="#通过创建-gh-pages-分支" class="headerlink" title="通过创建 gh-pages 分支"></a>通过创建 gh-pages 分支</h3>
-          
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-
-      
-    <div class="article-tag tagcloud">
-        <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/个人博客/">个人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/前端拓展/">前端拓展</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/笔记本/">笔记本</a></li></ul>
-    </div>
-
-      
-        <p class="article-more-link">
-          <a href="/2016/08/12/github创建多个blog/#more">more >></a>
+    <div class="copyright">
+        <p><span>本文标题:</span><a href="/2017/05/21/webpack 配置文件/">webpack配置文件</a></p>
+        <p><span>文章作者:</span><a href="/" title="回到主页">耿文娟</a></p>
+        <p><span>发布时间:</span>2017-05-21, 14:15:06</p>
+        <p><span>最后更新:</span>2017-08-28, 21:00:32</p>
+        <p>
+            <span>原始链接:</span><a class="post-url" href="/2017/05/21/webpack 配置文件/" title="webpack配置文件">http://yoursite.com/2017/05/21/webpack 配置文件/</a>
+            <span class="copy-path" data-clipboard-text="原文: http://yoursite.com/2017/05/21/webpack 配置文件/　　作者: 耿文娟" title="点击复制文章链接"><i class="fa fa-clipboard"></i></span>
+            <script> var clipboard = new Clipboard('.copy-path'); </script>
         </p>
-      
-      <div class="clearfix"></div>
+        <p>
+            <span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/" title="CC BY-NC-SA 4.0 International" target = "_blank">"署名-非商用-相同方式共享 4.0"</a> 转载请保留原文链接及作者。
+        </p>
     </div>
-    
-  </div>
+
+
+
+    <nav id="article-nav">
+        
+            <div id="article-nav-newer" class="article-nav-title">
+                <a href="/2017/05/29/MySQL语句/">
+                    MYSQL 语句
+                </a>
+            </div>
+        
+        
+            <div id="article-nav-older" class="article-nav-title">
+                <a href="/2016/08/12/github创建多个blog/">
+                    github 创建多个blog
+                </a>
+            </div>
+        
+    </nav>
+
   
 </article>
 
+    <div id="toc" class="toc-article">
+        <strong class="toc-title">文章目录</strong>
+        
+            <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#webpack配置文件"><span class="toc-number">1.</span> <span class="toc-text">webpack配置文件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack介绍"><span class="toc-number">1.1.</span> <span class="toc-text">webpack介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack常用指令和webpack-config-js配置文件"><span class="toc-number">1.2.</span> <span class="toc-text">webpack常用指令和webpack.config.js配置文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack中loader介绍"><span class="toc-number">1.3.</span> <span class="toc-text">webpack中loader介绍</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#webpack相关配置"><span class="toc-number">1.4.</span> <span class="toc-text">webpack相关配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#打包css资源演示"><span class="toc-number">1.4.1.</span> <span class="toc-text">打包css资源演示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#打包sass资源演示"><span class="toc-number">1.4.2.</span> <span class="toc-text">打包sass资源演示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#打包less资源演示"><span class="toc-number">1.4.3.</span> <span class="toc-text">打包less资源演示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#打包url-请求的资源"><span class="toc-number">1.4.4.</span> <span class="toc-text">打包url()请求的资源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ECMAScript6语法转ECMAScript5语法"><span class="toc-number">1.4.5.</span> <span class="toc-text">ECMAScript6语法转ECMAScript5语法</span></a></li></ol></li></ol></li></ol>
+        
+    </div>
+    <style>
+        .left-col .switch-btn,
+        .left-col .switch-area {
+            display: none;
+        }
+        .toc-level-3 i,
+        .toc-level-3 ol {
+            display: none !important;
+        }
+    </style>
+
+    <input type="button" id="tocButton" value="隐藏目录"  title="点击按钮隐藏或者显示文章目录">
+
+    <script>
+        yiliaConfig.toc = ["隐藏目录", "显示目录", !!"true"];
+    </script>
+
+
+
+    
+<div class="share">
+    
+        <div class="bdsharebuttonbox">
+            <a href="#" class="fa fa-twitter bds_twi" data-cmd="twi" title="分享到推特"></a>
+            <a href="#" class="fa fa-weibo bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+            <a href="#" class="fa fa-qq bds_sqq" data-cmd="sqq" title="分享给 QQ 好友"></a>
+            <a href="#" class="fa fa-files-o bds_copy" data-cmd="copy" title="复制网址"></a>
+            <a href="#" class="fa fa fa-envelope-o bds_mail" data-cmd="mail" title="通过邮件分享"></a>
+            <a href="#" class="fa fa-weixin bds_weixin" data-cmd="weixin" title="生成文章二维码"></a>
+            <a href="#" class="fa fa-share-alt bds_more" data-cmd="more"></i></a>
+        </div>
+        <script>
+            window._bd_share_config={
+                "common":{"bdSnsKey":{},"bdText":"webpack配置文件　| wen　","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];
+        </script>
+    
+
+    
+</div>
 
 
 
@@ -1018,13 +517,57 @@ less:  less-loader的依赖包
 
 
 
+    
+        <section id="comments">
+    <style> aside.comment-bar { margin: auto 30px; }</style>
+    <div id="disqus_thread"></div>
+    <script>
+        var disqus_config = function(){
+            this.page.url = 'http://yoursite.com/2017/05/21/webpack 配置文件/';
+            this.page.identifier = '2017/05/21/webpack 配置文件/';
+        };
+        var loadComment = function(){
+            var d = document, s = d.createElement('script');
+            s.src = '//.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        }
+    </script>
+    
+    <script> loadComment(); </script>
 
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
-    </nav>
-  
+</section>
+
+
+    
+
+
+
+
+    <div class="scroll" id="post-nav-button">
+        
+            <a href="/2017/05/29/MySQL语句/" title="上一篇: MYSQL 语句">
+                <i class="fa fa-angle-left"></i>
+            </a>
+        
+
+        <a title="文章列表"><i class="fa fa-bars"></i><i class="fa fa-times"></i></a>
+
+        
+            <a href="/2016/08/12/github创建多个blog/" title="下一篇: github 创建多个blog">
+                <i class="fa fa-angle-right"></i>
+            </a>
+        
+    </div>
+
+    <ul class="post-list"><li class="post-list-item"><a class="post-list-link" href="/2017/07/29/blog/">blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/07/29/你好/">你好</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/14/nodejs案例(mysql + 前端渲染)思路分析/">nodejs 案例思路分析（数据库+前端渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/13/nodejs案例(mysql + 后台渲染)思路分析/">nodejs 案例思路分析（数据库+后台渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/12/nodejs案例(json + 后台渲染)思路分析/">nodejs 案例思路分析（json文件+后台渲染）</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/05/node-js/">node js</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/06/03/node Js概述/">Node.js是做什么的</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/29/MySQL语句/">MYSQL 语句</a></li><li class="post-list-item"><a class="post-list-link" href="/2017/05/21/webpack 配置文件/">webpack配置文件</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/08/12/github创建多个blog/">github 创建多个blog</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/hexo+github创建属于自己的博客/">hexo+github创建属于自己的博客</a></li><li class="post-list-item"><a class="post-list-link" href="/2016/07/29/hello-world/">Hello World</a></li></ul>
+
+
+
+
+    <script>
+        
+    </script>
 </div>
       <footer id="footer">
     <div class="outer">
